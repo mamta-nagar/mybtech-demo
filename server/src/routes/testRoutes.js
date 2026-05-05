@@ -1,0 +1,10 @@
+const router = require('express').Router();
+const c = require('../controllers/testController');
+const auth = require('../middleware/auth');
+router.get('/', c.listTests);
+router.get('/:id', auth, c.getTestById);
+router.post('/', auth, c.createTest);
+router.post('/submit', auth, c.submitAttempt);
+router.get('/me/attempts', auth, c.myAttempts);
+router.get('/me/analytics', auth, c.analytics);
+module.exports = router;
